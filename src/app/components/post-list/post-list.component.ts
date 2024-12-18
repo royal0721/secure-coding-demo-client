@@ -3,12 +3,11 @@ import { PostService } from '../../services/post/post.service';
 import DOMPurify from 'dompurify';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss'],
   providers: [PostService],
@@ -65,18 +64,5 @@ export class PostListComponent implements OnInit {
   // 清理輸入內容
   sanitizeContent(content: string): string {
     return DOMPurify.sanitize(content);
-  }
-
-  // 調用受保護的端點
-  callProtectedEndpoint(): void {
-    this.postService.callProtectedEndpoint().subscribe({
-      next: (response) => {
-        this.result = response.message;
-      },
-      error: (err) => {
-        console.error('訪問受保護的端點失敗:', err);
-        this.result = '訪問失敗';
-      },
-    });
   }
 }

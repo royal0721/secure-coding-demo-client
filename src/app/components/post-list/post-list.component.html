@@ -6,9 +6,7 @@
 <h3>新增留言</h3>
 <form (ngSubmit)="onAddPost()">
   <textarea [(ngModel)]="newPostContent" name="content" required></textarea>
-  <button type="submit">送出</button>
+  <div class="button-wrapper">
+    <button type="submit">送出</button>
+  </div>
 </form>
-
-<h2>受保護的端點測試</h2>
-<button (click)="callProtectedEndpoint()">訪問受保護的端點</button>
-<p *ngIf="result">{{ result }}</p>

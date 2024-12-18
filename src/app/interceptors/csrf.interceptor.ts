@@ -28,7 +28,6 @@ export const csrfInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next
 ): Observable<HttpEvent<unknown>> => {
-  console.log('攔截器觸發，請求 URL:', req.url);
   return from(fetchCsrfToken()).pipe(
     switchMap(() => {
       const clonedReq = csrfToken

@@ -1,0 +1,19 @@
+.app-container {
+  display: flex;
+  justify-content: space-between; /* 左右分佈 */
+  height: 100vh; /* 高度佔滿整個視窗 */
+}
+
+.left {
+  width: 250px; /* 側邊欄固定寬度 */
+  background-color: #f4f4f4; /* 假設背景顏色 */
+  border-right: 1px solid #ddd; /* 分隔線 */
+}
+
+.right {
+  flex: 1; /* 自動填滿剩餘空間 */
+  display: flex; /* 設定為彈性容器 */
+  background-color: #fff; /* 假設背景顏色 */
+  overflow: auto; /* 防止內容溢出 */
+  padding: 30px;
+}

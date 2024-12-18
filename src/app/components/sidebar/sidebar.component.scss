@@ -1,0 +1,21 @@
+:host {
+  border-right: 1px solid #ddd;
+  list-style-type: none;
+  background-color: #f4f4f4;
+}
+
+.menu {
+  padding: 10px;
+}
+
+.submenu {
+  li {
+    padding: 15px 10px;
+  }
+  li:hover {
+    padding: 15px 10px;
+    color: grey;
+    background-color: #e7e7e7;
+    cursor: pointer;
+  }
+}
