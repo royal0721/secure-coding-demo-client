@@ -1,7 +1,11 @@
-<div class="login-container">
-  <h2>登入</h2>
-  <form (ngSubmit)="onSubmit()">
-    <div>
+<div id="login-container">
+  <div id="header-container">
+    <i class="material-icons">pets</i>
+    <h2 id="header-text">登入</h2>
+    <i class="material-icons">pets</i>
+  </div>
+  <form id="login-form" (ngSubmit)="onSubmit()">
+    <div class="row">
       <label for="username">帳號</label>
       <input
         type="text"
@@ -12,7 +16,7 @@
       />
     </div>
 
-    <div>
+    <div class="row">
       <label for="password">密碼</label>
       <input
         type="password"
