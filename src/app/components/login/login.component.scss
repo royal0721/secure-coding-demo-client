@@ -1,9 +1,11 @@
+$spacing-unit: 20px;
+
 :host {
   margin: auto;
 }
 
 #login-container {
-  padding: 20px;
+  padding: $spacing-unit;
   width: 300px;
   border: 2px rgb(224, 224, 224) solid;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -12,10 +14,19 @@
   text-align: center;
 }
 
-#header-container {
+.flex-container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#register-link {
+  font-size: medium;
+  color: grey;
+  justify-content: right;
+  a:hover {
+    color: rgb(75, 75, 75);
+  }
 }
 
 #header-text {
@@ -23,14 +34,14 @@
 }
 
 #login-form {
-  padding: 20px;
+  padding: $spacing-unit;
 
   .row {
     display: flex;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom: $spacing-unit;
     label {
-      padding-right: 20px;
+      padding-right: $spacing-unit;
     }
     input {
       flex: 1;

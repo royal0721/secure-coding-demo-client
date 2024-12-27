@@ -1,5 +1,5 @@
 <div id="login-container">
-  <div id="header-container">
+  <div class="flex-container">
     <i class="material-icons">pets</i>
     <h2 id="header-text">登入</h2>
     <i class="material-icons">pets</i>
@@ -26,7 +26,10 @@
         required
       />
     </div>
-
+    <div id="register-link" class="flex-container">
+      <p>還沒有帳號？</p>
+      <a routerLink="/register">註冊</a>
+    </div>
     <button type="submit">登入</button>
   </form>
 

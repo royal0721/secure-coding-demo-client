@@ -236,3 +236,8 @@ textarea:disabled {
 body {
   background-color: #e0e0e0;
 }
+
+a {
+  display: inline; /* 或者 block，視需求而定 */
+  pointer-events: auto; /* 確保點擊事件未被禁用 */
+}
