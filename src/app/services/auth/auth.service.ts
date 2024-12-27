@@ -2,58 +2,49 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private tokenKey = 'authToken';
-
+  authApi = `${environment.apiUrl}/auth`;
   constructor(private http: HttpClient, private router: Router) {}
 
   // 註冊
   register(username: string, password: string, role: string) {
-    return this.http.post(`${environment.apiUrl}/auth/register`, {
-      username,
-      password,
-      role,
-    });
+    return this.http.post(
+      `${this.authApi}/register`,
+      {
+        username,
+        password,
+      },
+      {
+        withCredentials: true, // 確保請求攜帶HttpOnly cookie
+      }
+    );
   }
 
   // 登入
   login(username: string, password: string) {
-    return this.http.post(`${environment.apiUrl}/auth/login`, {
-      username,
-      password,
-    });
+    return this.http.post(
+      `${this.authApi}/login`,
+      {
+        username,
+        password,
+      },
+      {
+        withCredentials: true, // 確保請求攜帶HttpOnly cookie
+      }
+    );
   }
 
-  // 保存 Token
-  saveToken(token: string) {
-    localStorage.setItem(this.tokenKey, token);
+  refreshCookie(): Observable<any> {
+    return this.http.post(`${this.authApi}/refresh`, {}); // 發送 POST 請求
   }
 
-  // 獲取 Token
-  getToken() {
-    return localStorage.getItem(this.tokenKey);
-  }
-
-  // 獲取用戶角色
-  getUserRole(): string | null {
-    const token = this.getToken();
-    if (!token) return null;
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload.role;
-  }
-
-  // 是否已登入
-  isLoggedIn(): boolean {
-    return !!this.getToken();
-  }
-
-  // 登出
-  logout() {
-    localStorage.removeItem(this.tokenKey);
-    this.router.navigate(['/login']);
+  // 檢查用戶是否已登入
+  isLoggedIn(): Observable<any> {
+    return this.http.get(`${this.authApi}/posts`); // 發送到受保護的路徑
   }
 }

@@ -1,0 +1,33 @@
+<div class="login-container">
+  <h2>登入</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">帳號</label>
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="password">密碼</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </div>
+
+    <button type="submit">登入</button>
+  </form>
+
+  <!-- 顯示錯誤訊息 -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>
