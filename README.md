@@ -19,7 +19,7 @@
 [心智圖](https://github.com/royal0721/secure-coding-demo-client/wiki/%E7%AC%AC%E5%85%AD%E7%AB%A0:-%E5%BF%83%E6%99%BA%E5%9C%96%E2%80%90%E8%B7%A8%E7%AB%99%E8%AB%8B%E6%B1%82%E5%81%BD%E9%80%A0)
 
 ## Ch7
-[心智圖]()
+[心智圖](https://github.com/royal0721/secure-coding-demo-client/wiki/%E7%AC%AC%E4%B8%83%E7%AB%A0:-%E5%BF%83%E6%99%BA%E5%9C%96%E2%80%90%E8%AA%8D%E8%AD%89)
 
 ## Ch8
 [心智圖]()
