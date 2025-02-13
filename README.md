@@ -25,7 +25,7 @@
 [心智圖](https://github.com/royal0721/secure-coding-demo-client/wiki/%E7%AC%AC%E5%85%AB%E7%AB%A0:-%E5%BF%83%E6%99%BA%E5%9C%96%E2%80%90%E5%AE%89%E5%85%A8%E9%96%8B%E7%99%BC%E6%8C%87%E5%8D%97)
 
 ## Ch9
-[心智圖]()
+[心智圖](https://github.com/royal0721/secure-coding-demo-client/wiki/%E7%AC%AC%E4%B9%9D%E7%AB%A0:-%E5%BF%83%E6%99%BA%E5%9C%96%E2%80%90%E5%AE%89%E5%85%A8%E5%BF%83%E6%85%8B%E5%BB%BA%E7%AB%8B)
 
 ## Ch12 
 [前端-實踐範例](https://github.com/royal0721/secure-coding-demo-client)
