@@ -5,6 +5,9 @@
 [Ch1-1 Demo](https://stackblitz.com/~/github.com/royal0721/reflected-xss-demo)
 [Ch1-1 源碼](https://github.com/royal0721/reflected-xss-demo)
 
+[Ch1-2 Demo](https://github.com/royal0721/test-xss-demo)
+[Ch1-2 源碼](https://stackblitz.com/~/github.com/royal0721/test-xss-demo)
+
 ## Ch2
 [雙重驗證範例](https://github.com/royal0721/SecureCodingDemoSite/tree/main)
 
