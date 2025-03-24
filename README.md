@@ -15,7 +15,10 @@
 [JSONP Bypass 源碼](https://github.com/royal0721/jsonp-bypass-demo)
 
 ## Ch2
-[雙重驗證範例](https://github.com/royal0721/SecureCodingDemoSite/tree/main)
+[雙重驗證範例 Backend with static frontend file](
+https://github.com/royal0721/2fa-app) [雙重驗證範例 Frontend](
+https://github.com/royal0721/2fa-client)
+[注意：這邊的檔案有進行重構，可能會與書籍有些許差異]
 
 ## Ch3
 [檔案上傳範例](https://github.com/royal0721/SecureCodingDemoSite/tree/main)
