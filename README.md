@@ -53,6 +53,7 @@ https://github.com/royal0721/2fa-client)
 [心智圖](https://github.com/royal0721/secure-coding-demo-client/wiki/%E7%AC%AC%E5%85%AD%E7%AB%A0:-%E5%BF%83%E6%99%BA%E5%9C%96%E2%80%90%E8%B7%A8%E7%AB%99%E8%AB%8B%E6%B1%82%E5%81%BD%E9%80%A0)
 ### 程式碼範例
 [CSURF 範例](https://github.com/royal0721/csurf-token-app)
+[Double Submit Cookie 範例](https://github.com/royal0721/double-submit-cookie-app)
 
 ---
 
