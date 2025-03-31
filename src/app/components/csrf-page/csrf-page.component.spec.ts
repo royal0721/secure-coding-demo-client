@@ -10,8 +10,8 @@ describe('CsrfPageComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CsrfPageComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(CsrfPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

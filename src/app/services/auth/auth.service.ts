@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 
@@ -9,16 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   authApi = `${environment.apiUrl}/auth`;
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   // 註冊
-  register(username: string, password: string, role: string) {
+  register(username: string, password: string, roleId: number) {
+    const body: any = {
+      username,
+      password,
+      roleId, 
+    };
+
     return this.http.post(
       `${this.authApi}/register`,
-      {
-        username,
-        password,
-      },
+      body,
       {
         withCredentials: true, // 確保請求攜帶HttpOnly cookie
       }
@@ -45,6 +47,14 @@ export class AuthService {
 
   // 檢查用戶是否已登入
   isLoggedIn(): Observable<any> {
-    return this.http.get(`${this.authApi}/posts`); // 發送到受保護的路徑
+    return this.http.get(`${environment.apiUrl}/auth/status`, {
+      withCredentials: true,
+    });
+  }
+
+  logout(): Observable<any> {
+    return this.http.post(`${this.authApi}/logout`, {}, {
+      withCredentials: true, 
+    });
   }
 }

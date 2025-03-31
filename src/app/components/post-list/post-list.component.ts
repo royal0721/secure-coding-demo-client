@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { PostService } from '../../services/post/post.service';
 import DOMPurify from 'dompurify';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { PermissionService } from '../../services/permission/permission.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditPostDialogComponent } from '../edit-post-dialog/edit-post-dialog.component';
 
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss'],
   providers: [PostService],
@@ -17,7 +21,10 @@ export class PostListComponent implements OnInit {
   newPostContent = '';
   result: string | null = null;
 
-  constructor(private postService: PostService) {}
+  private postService = inject(PostService);
+  private permissionService = inject(PermissionService);
+  private dialog = inject(MatDialog);
+
   ngOnInit(): void {
     this.loadPosts();
   }
@@ -44,6 +51,62 @@ export class PostListComponent implements OnInit {
     });
   }
 
+  onDeletePost(id: number) {
+    if (confirm('確定要刪除這篇貼文嗎？')) {
+      this.postService.deletePost(id).subscribe({
+        next: () => {
+          this.posts = this.posts.filter(p => p.id !== id);
+          alert('成功刪除此貼文');
+        },
+        error: (err) => {
+          console.error('刪除失敗：', err);
+          alert('無法刪除此貼文，可能已被移除或您沒有權限。');
+        }
+      });
+    }
+  }
+
+  onEditPost(post: any) {
+    this.permissionService.checkPermission('update_post').subscribe({
+      next: (canEdit) => {
+        if (canEdit) {
+          const dialogRef = this.dialog.open(EditPostDialogComponent, {
+            data: { post: { ...post } }
+          });
+
+          dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+              // 如果 Dialog 回傳 true，代表已成功編輯，我們刷新這篇 post 的內容
+              this.postService.getPostById(post.id).subscribe({
+                next: (updatedPost) => {
+                  // 用新的內容更新畫面上這篇 post（假設你有 posts 陣列）
+                  const index = this.posts.findIndex((p) => p.id === post.id);
+                  if (index !== -1) {
+                    this.posts[index] = updatedPost;
+                  }
+                },
+                error: () => {
+                  alert('取得更新後貼文失敗');
+                },
+              });
+            }
+          });
+        } else {
+          alert('您沒有權限編輯這篇貼文');
+        }
+      },
+      error: () => {
+        alert('無法檢查權限，請稍後再試');
+      },
+    });
+  }
+
+
+  // 定義 post interface
+  trackByPostId(index: number, post: any) {
+    return post.id;
+  }
+
   // 驗證留言內容
   private isContentInvalid(content: string): boolean {
     return !content.trim();
@@ -58,7 +121,7 @@ export class PostListComponent implements OnInit {
   // 處理新增留言錯誤
   private handleAddPostError(error: any): void {
     console.error('新增留言失敗:', error);
-    alert('無法新增留言，請稍後再試');
+    alert('無法新增貼文，可能內容不符合規則或您沒有權限。');
   }
 
   // 清理輸入內容

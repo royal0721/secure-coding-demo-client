@@ -5,9 +5,11 @@ import { authGuard } from './quards/auth/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // 默認重定向
+  { path: 'register', component: RegisterComponent },
   {
     path: '',
     component: AuthLayoutComponent, // 登入布局

@@ -1,0 +1,44 @@
+:host {
+    text-align: center;
+}
+
+.title {
+    margin: 30px auto;
+    width: 350px;
+}
+
+.form-block {
+    width: 350px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-180 {
+    width: 180px;
+}
+
+.warning {
+    text-align: right;
+    padding: 5px 10px;
+}
+
+input,
+select {
+    padding: 4px 8px;
+    border: rgb(201, 201, 201) 1px solid;
+    border-radius: 5px;
+}

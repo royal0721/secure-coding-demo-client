@@ -24,6 +24,7 @@ $spacing-unit: 20px;
   font-size: medium;
   color: grey;
   justify-content: right;
+
   a:hover {
     color: rgb(75, 75, 75);
   }
@@ -40,9 +41,11 @@ $spacing-unit: 20px;
     display: flex;
     align-items: center;
     padding-bottom: $spacing-unit;
+
     label {
       padding-right: $spacing-unit;
     }
+
     input {
       flex: 1;
       padding: 4px 8px;
@@ -54,5 +57,13 @@ $spacing-unit: 20px;
   button {
     width: 100%;
     margin-top: 10px;
+
+    &.trans-btn {
+      border: none;
+      background-color: white;
+      width: fit-content;
+      margin-top: 0;
+    }
   }
+
 }

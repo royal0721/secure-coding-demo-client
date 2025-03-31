@@ -3,7 +3,6 @@ import { AuthService } from './../../services/auth/auth.service';
 import {
   HttpErrorResponse,
   HttpEvent,
-  HttpHandler,
   HttpHandlerFn,
   HttpInterceptorFn,
   HttpRequest,

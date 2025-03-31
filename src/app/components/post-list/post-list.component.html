@@ -1,12 +1,24 @@
-<h2>留言板</h2>
-<div *ngFor="let post of posts" class="post">
-  <p [innerHTML]="sanitizeContent(post.content)"></p>
+<h2 class="post-title">留言板</h2>
+
+<div *ngFor="let post of posts; trackBy: trackByPostId" class="post-card">
+  <div class="post-header">
+    <h3 [innerHTML]="sanitizeContent(post.name)"></h3>
+    <div class="post-actions">
+      <button mat-icon-button (click)="onEditPost(post)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="onDeletePost(post.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <p class="post-time">發佈時間：{{ post.createdAt | date:'yyyy/MM/dd HH:mm' }}</p>
 </div>
 
-<h3>新增留言</h3>
-<form (ngSubmit)="onAddPost()">
+<h3 class="form-title">新增留言</h3>
+<form class="post-form" (ngSubmit)="onAddPost()">
   <textarea [(ngModel)]="newPostContent" name="content" required></textarea>
-  <div class="button-wrapper">
-    <button type="submit">送出</button>
+  <div class="form-actions">
+    <button type="submit" mat-raised-button color="primary">送出</button>
   </div>
 </form>

@@ -7,28 +7,16 @@
   <form id="login-form" (ngSubmit)="onSubmit()">
     <div class="row">
       <label for="username">帳號</label>
-      <input
-        type="text"
-        id="username"
-        [(ngModel)]="username"
-        name="username"
-        required
-      />
+      <input type="text" id="username" [(ngModel)]="username" name="username" required />
     </div>
 
     <div class="row">
       <label for="password">密碼</label>
-      <input
-        type="password"
-        id="password"
-        [(ngModel)]="password"
-        name="password"
-        required
-      />
+      <input type="password" id="password" [(ngModel)]="password" name="password" required />
     </div>
     <div id="register-link" class="flex-container">
       <p>還沒有帳號？</p>
-      <a routerLink="/register">註冊</a>
+      <button class="trans-btn" type="button" routerLink="/register">註冊</button>
     </div>
     <button type="submit">登入</button>
   </form>

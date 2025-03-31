@@ -241,3 +241,6 @@ a {
   display: inline; /* 或者 block，視需求而定 */
   pointer-events: auto; /* 確保點擊事件未被禁用 */
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

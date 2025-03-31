@@ -1,1 +1,43 @@
-<p>register works!</p>
+<button (click)="goBack()">
+    <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+    </button>
+</button>
+<h2 class="title">註冊帳號</h2>
+
+<form class="form-block" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <label for="username">
+            使用者名稱
+            <span matTooltip="最少三個字" matTooltipPosition="above" matTooltipShowDelay="300">ⓘ</span>
+        </label>
+        <input id="username" formControlName="username" />
+    </div>
+    <div class="warning" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+        必填，最少 3 個字
+    </div>
+
+    <div class="row">
+        <label for="password">
+            密碼
+            <span matTooltip="密碼需包含：至少6字元、大寫、小寫、數字與特殊符號" matTooltipPosition="above" matTooltipShowDelay="300">ⓘ</span>
+        </label>
+        <input id="password" type="password" formControlName="password" />
+    </div>
+    <div class="warning" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        必填，最少 6 個字
+    </div>
+
+    <div class="row pb-30">
+        <label for="roleId">角色</label>
+        <select class="w-180" id="roleId" formControlName="roleId">
+            <option value="1">使用者</option>
+            <option value="2">管理員</option>
+        </select>
+    </div>
+
+    <button class="w-100" type="submit" [disabled]="registerForm.invalid">註冊</button>
+</form>
+
+<div *ngIf="successMessage" style="color: green;">{{ successMessage }}</div>
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>

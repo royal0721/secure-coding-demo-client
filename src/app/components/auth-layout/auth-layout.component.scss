@@ -1,6 +1,9 @@
 .auth-container {
   display: flex;
-  height: 100vh; /* 確保撐滿視窗高度 */
-  width: 100%; /* 確保撐滿寬度 */
-  display: flex; /* 使用 flex 確保內部元素可以撐滿 */
+  height: 100vh;
+  /* 確保撐滿視窗高度 */
+  width: 100%;
+  /* 確保撐滿寬度 */
+  display: flex;
+  /* 使用 flex 確保內部元素可以撐滿 */
 }
