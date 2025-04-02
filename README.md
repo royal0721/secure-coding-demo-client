@@ -9,7 +9,7 @@
 [Reflected XSS Demo](https://stackblitz.com/~/github.com/royal0721/reflected-xss-demo)
 [Reflected XSS 程式碼](https://github.com/royal0721/reflected-xss-demo)
 
-1.2 範例二
+1.2 範例二 (提供給讀者查看的 Demo，可以自行嘗試)
 [Test XSS Demo](https://github.com/royal0721/test-xss-demo)
 [Test XSS 程式碼](https://stackblitz.com/~/github.com/royal0721/test-xss-demo)
 
