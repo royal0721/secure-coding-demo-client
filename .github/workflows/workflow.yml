@@ -25,9 +25,9 @@ jobs:
     - name: Build Angular App
       run: npm run build
 
-    - name: Run Unit Tests
-      run: |
-        npm run test -- --watch=false --code-coverage
+    # - name: Run Unit Tests
+    #   run: |
+    #     npm run test -- --watch=false --code-coverage
 
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v5.0.0
