@@ -1,8 +1,8 @@
 <h2 mat-dialog-title>編輯貼文</h2>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="p-20" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill" class="w-full">
-        <mat-label>貼文內容</mat-label>
+        <mat-label>貼文標題</mat-label>
         <input matInput formControlName="name" appAutoFocus />
         <mat-error *ngIf="form.get('name')?.invalid">
             貼文必須至少 3 個字

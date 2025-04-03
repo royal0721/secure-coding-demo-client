@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PermissionService } from '../../services/permission/permission.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditPostDialogComponent } from '../edit-post-dialog/edit-post-dialog.component';
+import { Post } from '../../interfaces/post.interface';
 
 @Component({
   selector: 'app-post-list',
@@ -17,7 +18,7 @@ import { EditPostDialogComponent } from '../edit-post-dialog/edit-post-dialog.co
   providers: [PostService],
 })
 export class PostListComponent implements OnInit {
-  posts: any[] = [];
+  posts: Post[] = [];
   newPostContent = '';
   result: string | null = null;
 
@@ -66,39 +67,53 @@ export class PostListComponent implements OnInit {
     }
   }
 
-  onEditPost(post: any) {
+  onEditPost(post: Post) {
     this.permissionService.checkPermission('update_post').subscribe({
       next: (canEdit) => {
         if (canEdit) {
-          const dialogRef = this.dialog.open(EditPostDialogComponent, {
-            data: { post: { ...post } }
-          });
-
-          dialogRef.afterClosed().subscribe((result) => {
-            if (result) {
-              // 如果 Dialog 回傳 true，代表已成功編輯，我們刷新這篇 post 的內容
-              this.postService.getPostById(post.id).subscribe({
-                next: (updatedPost) => {
-                  // 用新的內容更新畫面上這篇 post（假設你有 posts 陣列）
-                  const index = this.posts.findIndex((p) => p.id === post.id);
-                  if (index !== -1) {
-                    this.posts[index] = updatedPost;
-                  }
-                },
-                error: () => {
-                  alert('取得更新後貼文失敗');
-                },
-              });
-            }
-          });
+          this.openDialog(post);
         } else {
-          alert('您沒有權限編輯這篇貼文');
+          this.handleNoPermission();
         }
       },
       error: () => {
         alert('無法檢查權限，請稍後再試');
       },
     });
+  }
+
+  private openDialog(post: Post) {
+    const dialogRef = this.dialog.open(EditPostDialogComponent, {
+      data: { post: { ...post } }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.handlePostUpdate(post);
+      }
+    });
+  }
+
+  private handleNoPermission() {
+    alert('您沒有權限編輯這篇貼文');
+  }
+
+  private handlePostUpdate(post: any) {
+    this.postService.getPostById(post.id).subscribe({
+      next: (updatedPost) => {
+        this.updatePostInList(post, updatedPost);
+      },
+      error: () => {
+        alert('取得更新後貼文失敗');
+      },
+    });
+  }
+
+  private updatePostInList(post: any, updatedPost: any) {
+    const index = this.posts.findIndex((p) => p.id === post.id);
+    if (index !== -1) {
+      this.posts[index] = updatedPost;
+    }
   }
 
 

@@ -1,6 +1,5 @@
-import { HttpInterceptorFn } from '@angular/common/http';
-import { Observable, from, switchMap, tap } from 'rxjs';
-import { HttpRequest, HttpEvent } from '@angular/common/http';
+import { Observable, from, switchMap } from 'rxjs';
+import { HttpRequest, HttpEvent, HttpInterceptorFn } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 let csrfToken: string | null = null;

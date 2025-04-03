@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { PostListComponent } from '../app/components/post-list/post-list.component';
-import { CsrfPageComponent } from './components/csrf-page/csrf-page.component';
 import { authGuard } from './quards/auth/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
@@ -23,12 +21,14 @@ export const routes: Routes = [
     children: [
       {
         path: 'post-list',
-        component: PostListComponent,
+        loadComponent: () =>
+          import('./components/post-list/post-list.component').then(m => m.PostListComponent),
         canActivate: [authGuard], // 保護路由
       },
       {
         path: 'csrf-page',
-        component: CsrfPageComponent,
+        loadComponent: () =>
+          import('./components/csrf-page/csrf-page.component').then(m => m.CsrfPageComponent),
         canActivate: [authGuard], // 保護路由
       },
     ],

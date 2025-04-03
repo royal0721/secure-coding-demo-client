@@ -16,8 +16,8 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string | null = null; // 錯誤訊息顯示
 
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   // 處理登入
   onSubmit() {
@@ -31,7 +31,7 @@ export class LoginComponent {
         this.router.navigate(['/post-list']); // 登入成功後跳轉到 post-list
       },
       error: (err) => {
-        this.errorMessage = err.error?.message || '登入失敗，請稍後再試'; // 顯示後端返回的錯誤
+        this.errorMessage = err.error?.message ?? '登入失敗，請稍後再試'; // 顯示後端返回的錯誤
       },
     });
   }

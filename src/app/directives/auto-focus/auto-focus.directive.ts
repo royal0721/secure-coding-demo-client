@@ -5,7 +5,7 @@ import { Directive, ElementRef, AfterViewInit } from '@angular/core';
   standalone: true,
 })
 export class AutoFocusDirective implements AfterViewInit {
-  constructor(private el: ElementRef) { }
+  constructor(private readonly el: ElementRef) { }
 
   ngAfterViewInit() {
     setTimeout(() => {

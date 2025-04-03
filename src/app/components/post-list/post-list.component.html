@@ -2,7 +2,13 @@
 
 <div *ngFor="let post of posts; trackBy: trackByPostId" class="post-card">
   <div class="post-header">
-    <h3 [innerHTML]="sanitizeContent(post.name)"></h3>
+    <!-- 此處使用 innerHTML 是為了用 XSS 防禦設計的實驗性內容，實務上需要減少使用這種方式實踐 -->
+    <h3 *ngIf="post.name; else fallback" [innerHTML]="sanitizeContent(post.name)"></h3>
+    <ng-template #fallback>
+      <h3 aria-label="無標題" [innerHTML]="sanitizeContent('無標題')"></h3>
+    </ng-template>
+    <h3 *ngIf="post.name">{{ post.name }}</h3>
+    <h3 *ngIf="!post.name">無標題</h3>
     <div class="post-actions">
       <button mat-icon-button (click)="onEditPost(post)">
         <mat-icon>edit</mat-icon>

@@ -15,9 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  private fb = inject(FormBuilder);
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  private readonly fb = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
@@ -44,7 +44,7 @@ export class RegisterComponent {
         }, 1500); // 延遲 1.5 秒，顯示成功訊息
       },
       error: (err) => {
-        this.errorMessage = err.error?.message || '註冊失敗，請稍後再試';
+        this.errorMessage = err.error?.message ?? '註冊失敗，請稍後再試';
         this.successMessage = '';
       },
     });

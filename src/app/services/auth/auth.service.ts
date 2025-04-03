@@ -8,22 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   authApi = `${environment.apiUrl}/auth`;
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   // 註冊
   register(username: string, password: string, roleId: number) {
     const body: any = {
       username,
       password,
-      roleId, 
+      roleId,
     };
 
     return this.http.post(
       `${this.authApi}/register`,
-      body,
-      {
-        withCredentials: true, // 確保請求攜帶HttpOnly cookie
-      }
+      body
     );
   }
 
@@ -34,9 +31,6 @@ export class AuthService {
       {
         username,
         password,
-      },
-      {
-        withCredentials: true, // 確保請求攜帶HttpOnly cookie
       }
     );
   }
@@ -47,14 +41,10 @@ export class AuthService {
 
   // 檢查用戶是否已登入
   isLoggedIn(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/auth/status`, {
-      withCredentials: true,
-    });
+    return this.http.get(`${environment.apiUrl}/auth/status`,);
   }
 
   logout(): Observable<any> {
-    return this.http.post(`${this.authApi}/logout`, {}, {
-      withCredentials: true, 
-    });
+    return this.http.post(`${this.authApi}/logout`, {});
   }
 }

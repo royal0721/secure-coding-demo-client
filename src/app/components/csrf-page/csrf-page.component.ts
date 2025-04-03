@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class CsrfPageComponent {
   result: string | null = null;
 
-  constructor(private postService: PostService) { }
+  constructor(private readonly postService: PostService) { }
 
   // 調用受保護的端點
   callProtectedEndpoint(): void {

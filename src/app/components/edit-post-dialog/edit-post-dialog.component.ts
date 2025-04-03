@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatError } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { PostService } from '../../services/post/post.service';
-import { AutoFocusDirective } from '../../directives/auto-focus.directive';
+import { AutoFocusDirective } from '../../directives/auto-focus/auto-focus.directive';
 
 @Component({
   selector: 'app-edit-post-dialog',
@@ -27,9 +27,9 @@ export class EditPostDialogComponent {
   form: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private postService: PostService,
-    private dialogRef: MatDialogRef<EditPostDialogComponent>,
+    private readonly fb: FormBuilder,
+    private readonly postService: PostService,
+    private readonly dialogRef: MatDialogRef<EditPostDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { post: any }
   ) {
     this.form = this.fb.group({
