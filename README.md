@@ -75,6 +75,12 @@ https://github.com/royal0721/2fa-client)
 
 ---
 
+## Ch10
+### SonarCloud 補充影片
+[SonarCloud 補充影片](https://youtu.be/PmT5jhwwQqA)
+
+---
+
 ## Ch12 
 ### 程式碼範例
 [前端-實踐範例](https://github.com/royal0721/secure-coding-demo-client)
