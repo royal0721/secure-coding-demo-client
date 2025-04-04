@@ -22,9 +22,9 @@ export class PostListComponent implements OnInit {
   newPostContent = '';
   result: string | null = null;
 
-  private postService = inject(PostService);
-  private permissionService = inject(PermissionService);
-  private dialog = inject(MatDialog);
+  private readonly postService = inject(PostService);
+  private readonly permissionService = inject(PermissionService);
+  private readonly dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.loadPosts();
@@ -70,16 +70,28 @@ export class PostListComponent implements OnInit {
   onEditPost(post: Post) {
     this.permissionService.checkPermission('update_post').subscribe({
       next: (canEdit) => {
-        if (canEdit) {
-          this.openDialog(post);
-        } else {
-          this.handleNoPermission();
-        }
+        this.handlePermissionCheckResult(canEdit, post);
       },
       error: () => {
         alert('無法檢查權限，請稍後再試');
       },
     });
+  }
+
+  private handlePermissionCheckResult(canEdit: boolean, post: Post): void {
+    if (canEdit) {
+      this.executeWithPermission(post);
+    } else {
+      this.executeWithoutPermission();
+    }
+  }
+
+  private executeWithPermission(post: Post): void {
+    this.openDialog(post);
+  }
+
+  private executeWithoutPermission(): void {
+    this.handleNoPermission();
   }
 
   private openDialog(post: Post) {

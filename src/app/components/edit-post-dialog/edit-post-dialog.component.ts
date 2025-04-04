@@ -1,10 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatError } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatError } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { PostService } from '../../services/post/post.service';
 import { AutoFocusDirective } from '../../directives/auto-focus/auto-focus.directive';

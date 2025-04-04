@@ -11,7 +11,7 @@ export class PostService {
   private readonly postUrl = `${environment.apiUrl}/posts`;
   private readonly protectedUrl = `${environment.apiUrl}/csrf/protected-endpoint`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
 
   // 獲取所有留言

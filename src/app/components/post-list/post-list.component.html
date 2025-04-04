@@ -6,9 +6,9 @@
     <h3 *ngIf="post.name; else fallback" [innerHTML]="sanitizeContent(post.name)"></h3>
     <ng-template #fallback>
       <h3 aria-label="無標題" [innerHTML]="sanitizeContent('無標題')"></h3>
+      <h3 class="sr-only">{{ sanitizeContent('無標題') }}</h3>
     </ng-template>
-    <h3 *ngIf="post.name">{{ post.name }}</h3>
-    <h3 *ngIf="!post.name">無標題</h3>
+
     <div class="post-actions">
       <button mat-icon-button (click)="onEditPost(post)">
         <mat-icon>edit</mat-icon>

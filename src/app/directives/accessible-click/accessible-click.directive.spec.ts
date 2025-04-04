@@ -1,8 +1,20 @@
 import { AccessibleClickDirective } from './accessible-click.directive';
+import { ElementRef } from '@angular/core';
+import { fakeAsync, tick } from '@angular/core/testing';
 
-describe('AccessibleClickDirective', () => {
-  it('should create an instance', () => {
-    // const directive = new AccessibleClickDirective();
-    // expect(directive).toBeTruthy();
-  });
+describe('AutoFocusDirective', () => {
+  it('should call focus on nativeElement after view init (with setTimeout)', fakeAsync(() => {
+    const mockFocus = jasmine.createSpy('focus');
+    const mockElementRef = {
+      nativeElement: {
+        focus: mockFocus
+      }
+    };
+
+    const directive = new AccessibleClickDirective(mockElementRef as ElementRef);
+    directive.ngAfterViewInit();
+
+    tick();
+    expect(mockFocus).toHaveBeenCalled();
+  }));
 });
