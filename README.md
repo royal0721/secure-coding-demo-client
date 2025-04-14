@@ -77,7 +77,9 @@ https://github.com/royal0721/2fa-client)
 
 ## Ch10
 ### SonarCloud 補充影片
+
 [SonarCloud 補充影片](https://youtu.be/yC_QzigKQuU?si=U9iKAaXVlpyOu_jl)
+
 ---
 
 ## Ch12 
