@@ -85,5 +85,6 @@ https://github.com/royal0721/2fa-client)
 ## Ch12 
 ### 程式碼範例
 [前端-實踐範例](https://github.com/royal0721/secure-coding-demo-client)
+[提醒:因為時間關係，樣式部分尚未重構]
 [後端-實踐範例](https://github.com/royal0721/secure-coding-demo-app)
 [實踐範例請配合書中說明]
