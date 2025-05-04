@@ -93,4 +93,5 @@ https://github.com/royal0721/2fa-client)
 
 ## 延伸內容入口
 [HTTPS 補充說明：關於 SSL/TLS](https://www.kikasecures.com/2025/04/ssltls.html)
-[關於Log留存：我的看法]()
+
+[關於Log：到底要紀錄什麼？]()
