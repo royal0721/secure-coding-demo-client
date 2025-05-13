@@ -108,4 +108,3 @@ https://github.com/royal0721/2fa-client)
 [關於Log：到底要記錄什麼？](https://www.kikasecures.com/2025/05/log.html)
 
 [data: 為什麼危險？PHP Wrapper data:// 與 Client data: 的比較](https://www.kikasecures.com/2025/05/data-php.html)
-[]
